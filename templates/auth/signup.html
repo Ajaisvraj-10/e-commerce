@@ -1,0 +1,69 @@
+{% extends 'nav.html' %}
+
+{% block title %}
+Tech Hub
+{% endblock title %}
+
+{% block form %} 
+<br>
+<br>
+  <h1 class="head">Signup</h1> 
+  <div class="main">
+    <section class="signup">
+    <div class="container">
+    <div class="signup-content">
+
+      {% for message in messages %}
+      <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+        <strong></strong>{{message}} 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endfor %}
+
+    <form method="POST" id="signup-form" class="signup-form">
+      {% csrf_token %}
+    <h2 class="form-title">Create Your Account</h2>
+    <br>
+    <div class="form-group">
+    <input type="email" class="form-input" name="email" id="email" placeholder="Your Email" />
+    </div><br>
+    <div class="form-group">
+    <input type="text" class="form-input" name="pass1" id="password" placeholder="Password" />
+    <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+    </div><br>
+    <div class="form-group">
+    <input type="password" class="form-input" name="pass2" id="re_password" placeholder="Repeat your password" />
+    </div><br>
+    <div class="form-group">
+    <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up" />
+    </div>
+    </form>
+    <p style="color: aliceblue;"  class="loginhere">
+    Have already an account ? <a href="{% url 'login' %}" class="loginhere-link">Login here</a>
+    </p> 
+    </div>
+    </div>
+    </section>
+    </div>
+    <style>
+     .form-submit:hover{
+      background-color: black;
+      color: white;
+      border: radius 50px;
+     }
+     .form-input{
+      border-radius: 9px;
+     }
+     .form-group .form-submit{
+      border-radius: 8px;
+     }
+     .head{
+      margin-top: 69px;
+      padding-top: 60px;
+     }
+     .loginhere{
+      margin-bottom: 50px;
+
+     }
+    </style>
+{% endblock form %}
